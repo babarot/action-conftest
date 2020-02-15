@@ -9,10 +9,6 @@ inputs:
     description: 'A list of config file to be tested by conftest. Separated by a space'
     required: false
     default: ''
-  extensions:
-    description: 'A list of config file extension to be tested by conftest. Separated by a space'
-    required: false
-    default: ''
   policy:
     description: 'Path to the Rego policy files directory'
     required: false

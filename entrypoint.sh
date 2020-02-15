@@ -1,31 +1,12 @@
 #!/bin/bash
 
 BASE="${INPUT_PATH:-.}"
-EXTS=( ${INPUT_EXTENSIONS} )
 POLICY="${INPUT_POLICY:-policy}"
 FILES=( ${INPUT_FILES} )
 
-{
-  echo "[DEBUG] files: ${FILES[@]}"
-  echo "[DEBUG] extensions: ${EXTS[@]}"
-  echo "[DEBUG] policy: ${POLICY}"
-  echo "[DEBUG] base directory: ${BASE}"
-} >&2
-
 run_conftest() {
-  local file ext
+  local file
   local error=false
-
-  for ext in ${EXTS[@]}
-  do
-    for file in ${BASE}/*.${ext}
-    do
-      conftest test \
-        --no-color \
-        --policy "${POLICY}" \
-        --input "${ext}" "${file}" || error=true
-    done
-  done
 
   for file in "${FILES[@]}"
   do
