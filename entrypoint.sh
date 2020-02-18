@@ -31,11 +31,9 @@ run_conftest() {
       continue
     fi
 
-    ext="${file##*.}"
     conftest test \
       --no-color \
       --policy "${POLICY}" \
-      --input "${ext}" \
       "${file}" || error=true
   done
 
