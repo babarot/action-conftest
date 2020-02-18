@@ -27,7 +27,7 @@ run_conftest() {
   for file in "${FILES[@]}"
   do
     if ! match ${file}; then
-      echo "[DEBUG] ${file}: against the matches condition, so skip it"
+      echo "[DEBUG] ${file}: against the matches condition, so skip it" >&2
       continue
     fi
 
