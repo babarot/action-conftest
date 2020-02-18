@@ -5,14 +5,14 @@ inputs:
     description: 'Path to directory where config files are located'
     required: false
     default: '.'
-  files:
-    description: 'A list of config file to be tested by conftest. Separated by a space'
-    required: false
-    default: ''
   policy:
     description: 'Path to the Rego policy files directory'
     required: false
     default: 'policy'
+  files:
+    description: 'A list of config file to be tested by conftest. Separated by a space'
+    required: false
+    default: ''
   matches:
     description: 'A list of cases to be tested (e.g. "*.yaml *.json"). Separated by a space'
     required: false
