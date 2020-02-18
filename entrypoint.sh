@@ -26,7 +26,10 @@ run_conftest() {
 
   for file in "${FILES[@]}"
   do
-    match ${file} || continue
+    if ! match ${file}; then
+      echo "[DEBUG] ${file}: against the matches condition, so skip it"
+      continue
+    fi
 
     ext="${file##*.}"
     conftest test \
