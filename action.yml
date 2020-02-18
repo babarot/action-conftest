@@ -13,6 +13,10 @@ inputs:
     description: 'Path to the Rego policy files directory'
     required: false
     default: 'policy'
+  matches:
+    description: 'A list of cases to be tested (e.g. "*.yaml *.json"). Separated by a space'
+    required: false
+    default: ''
 outputs:
   result:
     description: 'Outputs of conftest command'
