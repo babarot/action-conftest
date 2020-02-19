@@ -43,10 +43,16 @@ run_conftest() {
 }
 
 main() {
+  local -i status
+
   run_conftest "$@" | tee -a result
+  status=${?}
+
   result="$(cat result)"
   # https://github.community/t5/GitHub-Actions/set-output-Truncates-Multiline-Strings/td-p/37870
   echo "::set-output name=result::${result//$'\n'/'%0A'}"
+
+  return ${status}
 }
 
 set -o pipefail
