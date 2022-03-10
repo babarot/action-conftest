@@ -87,6 +87,8 @@ The following are optional as `step.with` keys
 | `policy`   | String | Path to the Rego policy files directory                                   | `policy`|
 | `files`    | String | A list of config file to be tested by conftest. Separated by a space      |         |
 | `matches`  | String | A list of cases to be tested (e.g. "*.yaml *.json"). Separated by a space |         |
+| `namespace`| String | Namespace name running with conftest testing                              |         |
+| `all_namespaces`| Boolean | Enable --all-namespaces flag                                        | `false` |
 
 When providing a `path` and `files` at the same time, `files` will be attempted first, then falling back on `path` if the files can not be got from.
 

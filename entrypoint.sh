@@ -4,6 +4,8 @@ BASE="${INPUT_PATH:-.}"
 POLICY="${INPUT_POLICY:-policy}"
 FILES=( ${INPUT_FILES} )
 MATCHES=( ${INPUT_MATCHES} )
+NAMESPACE="${INPUT_NAMESPACE}"
+ALL_NAMESPACES="${INPUT_ALL_NAMESPACES:-false}"
 
 match() {
   local arg=${1}
@@ -24,6 +26,16 @@ run_conftest() {
   local file
   local error=false
 
+  local -a flags
+
+  if [[ -n ${NAMESPACE} ]]; then
+    flags+=(--namespace ${NAMESPACE})
+  fi
+
+  if ${ALL_NAMESPACES}; then
+    flags+=(--all-namespaces)
+  fi
+
   for file in "${FILES[@]}"
   do
     if ! match ${file}; then
@@ -31,7 +43,7 @@ run_conftest() {
       continue
     fi
 
-    conftest test \
+    conftest test ${flags[@]} \
       --no-color \
       --policy "${POLICY}" \
       "${file}" || error=true
