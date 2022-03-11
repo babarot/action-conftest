@@ -24,9 +24,9 @@ match() {
 
 run_conftest() {
   local file
-  local error=false
 
   local -a flags
+  local -a files
 
   if [[ -n ${NAMESPACE} ]]; then
     flags+=(--namespace ${NAMESPACE})
@@ -42,16 +42,14 @@ run_conftest() {
       echo "[DEBUG] ${file}: against the matches condition, so skip it" >&2
       continue
     fi
+    files+=("$file")
 
-    conftest test ${flags[@]} \
-      --no-color \
-      --policy "${POLICY}" \
-      "${file}" || error=true
   done
 
-  if ${error}; then
-    return 1
-  fi
+  conftest test ${flags[@]} \
+    --no-color \
+    --policy "${POLICY}" \
+    "${files[@]}"
 }
 
 main() {
