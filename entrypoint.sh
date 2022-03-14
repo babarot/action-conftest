@@ -43,8 +43,12 @@ run_conftest() {
       continue
     fi
     files+=("$file")
-
   done
+
+  if [[ ${#files[@]} == 0 ]]; then
+    echo "[DEBUG] no files to be passed to conftest"
+    return 0
+  fi
 
   conftest test ${flags[@]} \
     --no-color \
