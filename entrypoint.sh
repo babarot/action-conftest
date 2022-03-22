@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# do not expand glob in this shell script
+set -f
+
 BASE="${INPUT_PATH:-.}"
 POLICY="${INPUT_POLICY:-policy}"
 FILES=( ${INPUT_FILES} )
