@@ -9,6 +9,7 @@ FILES=( ${INPUT_FILES} )
 MATCHES=( ${INPUT_MATCHES} )
 NAMESPACE="${INPUT_NAMESPACE}"
 ALL_NAMESPACES="${INPUT_ALL_NAMESPACES:-false}"
+OUTPUT_FORMAT="${INPUT_OUTPUT_FORMAT}"
 
 match() {
   local arg=${1}
@@ -37,6 +38,10 @@ run_conftest() {
 
   if ${ALL_NAMESPACES}; then
     flags+=(--all-namespaces)
+  fi
+
+  if ${OUTPUT_FORMAT}; then
+    flags+=(--output ${OUTPUT_FORMAT})
   fi
 
   for file in "${FILES[@]}"
@@ -68,6 +73,7 @@ main() {
   result="$(cat result)"
   # https://github.community/t5/GitHub-Actions/set-output-Truncates-Multiline-Strings/td-p/37870
   echo "::set-output name=result::${result//$'\n'/'%0A'}"
+  echo "::set-output name=exit::${status}"
 
   return ${status}
 }

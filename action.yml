@@ -25,9 +25,15 @@ inputs:
     description: 'Enable --all-namespaces flag'
     required: false
     default: false
+  output_format:
+    description: conftest output format
+    required: false
+    default: 'stdout'
 outputs:
   result:
     description: 'Outputs of conftest command'
+  exit:
+    description: exit code
 runs:
   using: 'docker'
   image: 'Dockerfile'
