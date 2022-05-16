@@ -1,4 +1,4 @@
-name: 'conftest'
+name: 'conftest-fork'
 description: 'Run conftest test command'
 inputs:
   path:
