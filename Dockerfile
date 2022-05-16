@@ -1,6 +1,6 @@
-FROM golang:1.13.7-stretch
+FROM golang:1.18-buster
 
-ENV CONFTEST_VERSION=0.30.0
+ENV CONFTEST_VERSION=0.32.0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates \

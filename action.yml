@@ -17,7 +17,7 @@ inputs:
     description: 'A list of cases to be tested (e.g. "*.yaml *.json"). Separated by a space'
     required: false
     default: ''
-  namespaces:
+  namespace:
     description: 'Namespace name running with conftest testing'
     required: false
     default: ''
