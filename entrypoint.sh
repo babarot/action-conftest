@@ -2,7 +2,6 @@
 
 # do not expand glob in this shell script
 set -f
-set -x
 
 BASE="${INPUT_PATH:-.}"
 POLICY="${INPUT_POLICY:-policy}"
