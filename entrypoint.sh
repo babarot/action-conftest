@@ -2,6 +2,7 @@
 
 # do not expand glob in this shell script
 set -f
+set -x
 
 BASE="${INPUT_PATH:-.}"
 POLICY="${INPUT_POLICY:-policy}"
@@ -40,7 +41,7 @@ run_conftest() {
     flags+=(--all-namespaces)
   fi
 
-  if ${OUTPUT_FORMAT}; then
+  if [[ -n ${OUTPUT_FORMAT} ]]; then
     flags+=(--output ${OUTPUT_FORMAT})
   fi
 
