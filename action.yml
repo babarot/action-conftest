@@ -28,7 +28,7 @@ inputs:
   output_format:
     description: conftest output format
     required: false
-    default: 'stdout'
+    default: stdout
 outputs:
   result:
     description: 'Outputs of conftest command'
